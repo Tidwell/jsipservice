@@ -27,7 +27,7 @@
 
 	function clearTag(cbName) {
 		var el = document.getElementsByClassName(classPrefix+cbName)[0];
-		el.parent.removeChild(el);
+		el.parentNode.removeChild(el);
 	}
 
 	/*
