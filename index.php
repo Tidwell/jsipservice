@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 $pages = ['home','docs','contact'];
-$docs = ['bootstrap','js'];
+$docs = ['bootstrap','js','css'];
 
 $allowed = array_merge($pages,$docs);
 
