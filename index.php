@@ -13,7 +13,7 @@ $route = $path[1];
 if ($route === 'REST') {
 	require('./models/rest.php');
 	$rest = new RestService('GET');
-	$rest->handleRawRequest($_SERVER, $_GET, $_POST);
+	$rest->handleRawRequest();
 }
 else if (in_array($route, $allowed)) {
 	$page = $path[1];
