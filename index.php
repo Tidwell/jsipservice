@@ -15,6 +15,7 @@ if (in_array($route, $allowed)) {
 }
 
 else if ($route === 'REST') {
+	require('./models/rest.php');
 	$rest = new RestService('GET');
 	$rest->handleRawRequest($_SERVER, $_GET, $_POST);
 }
