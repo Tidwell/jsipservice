@@ -19,11 +19,11 @@
         <p>
           The ipService library provides a single method: .get.  It accepts a callback as its' only
           argument, which is passed an object containing the user's IP address.
-          <pre class="prettyprint">
-            {
-              ip: "00.000.000.000"
-            }
-          </pre>
+<pre class="prettyprint">
+{
+  ip: "00.000.000.000"
+}
+</pre>
         </p>
     </section>
 
@@ -36,18 +36,18 @@
       <p class="lead">Two, simple steps</p>
 
       <h3>1. Include the library via <code>script</code> tag.</h3>
-      <pre class="prettyprint">
-      &lt;script src="www.jsIpService.com/ipservice.js"&gt;&lt;script&rt;
-      </pre>
+<pre class="prettyprint">
+&lt;script src="www.jsIpService.com/ipservice.js"&gt;&lt;/script&gt;
+</pre>
 
 
       <h3>2. call .get.</h3>
-      <pre class="prettyprint">
-        function callback(user) {
-          alert(user.ip);
-        }
-        ipService.get(callback);
-      </pre>
+<pre class="prettyprint">
+function callback(user) {
+  alert(user.ip);
+}
+ipService.get(callback);
+</pre>
     </section>
 
     <section id="internals">
