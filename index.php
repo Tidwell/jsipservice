@@ -1,4 +1,6 @@
 <?
+error_reporting(E_ALL);
+
 $pages = ['home','docs','contact'];
 $path = explode('/', $_SERVER['PATH_INFO']);
 $route = $path[1];
