@@ -8,6 +8,7 @@
       <li><a href="#quick-start"><i class="icon-chevron-right"></i>Example</a></li>
       <li><a href="#source"><i class="icon-chevron-right"></i>Source</a></li>
       <li><a href="#internals"><i class="icon-chevron-right"></i>Internals</a></li>
+      <li><a href="#next-steps"><i class="icon-chevron-right"></i>Next Steps</a></li>
     </ul>
   </div>
   <div class="span9">
@@ -84,6 +85,49 @@ ipService.get(callback);
         <p>
           On the backend, both this website and the REST service are running through the same single-entry-point, with calls to the api being handled through a rest class, modified from <a href="http://blog.garethj.com/2009/02/17/building-a-restful-web-application-with-php/" target="_new">this example</a>.
         </p>
+    </section>
+
+    <section id="next-steps">
+        <div class="page-header">
+          <h1>Next Steps</h1>
+        </div>
+        <p>
+          These are potential new features, none are guarenteed to ever exist.  If you have any ideas, <a href="/contact">drop me a line.</a>
+        </p>
+        <ul>
+          <li>Features
+            <ul>
+              <li>tests</li>
+              <li>noConflict</li>
+              <li>jQuery plugin</li>
+              <li>self-hosted service</li>
+            </ul>
+          </li>
+
+          <li>Config options
+            <ul>
+              <li>callback prefix - noConflict</li>
+              <li>noConflict global ipService - noConflict</li>
+              <li>ajax route - selfHosted</li>
+            </ul>
+          </li>
+
+          <li>Organization
+            <ul>
+              <li>fork js library - jQuery & tests</li>
+              <li>fork REST service - selfHosted</li>
+              <li>proper build script - test</li>
+              <li>README</li>
+            </ul>
+          </li>
+
+          <li>Site
+            <ul>
+              <li>Scaling solution  - cdn-hosting, node backend</li>
+              <li>Refine REST - proper Headers and requestType support</li>
+            </ul>
+          </li>
+        </ul>
     </section>
 
   </div><!-- span9 -->
