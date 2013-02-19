@@ -17,10 +17,9 @@
 		callback off of the temporary storage object
 	*/
 	function CB(callback,cbName) {
+		if (!callback) { callback = callbacks.default; } //set the default if none passed
 		return function(ip) {
-			if (callback) {
-				callback(ip);
-			}
+			callback(ip);
 			delete callbacks[cbName];
 			clearTag(cbName);
 		};
@@ -39,11 +38,11 @@
 		cbCount++;
 		var uniqueCBName = 'cb'+cbCount;
 
-		callbacks[uniqueCBName] = new CB(callback,cbName);
+		callbacks[uniqueCBName] = new CB(callback,uniqueCBName);
 		script = document.createElement('script');
 		script.type = 'text/javascript';
 		script.className = classPrefix+uniqueCBName;
-		script.src = 'http://www.jsipservice.com/REST?callback=ipService.callbacks.'+cbName;
+		script.src = 'http://www.jsipservice.com/REST?callback=ipService.callbacks.'+uniqueCBName;
 		document.getElementsByTagName('head')[0].appendChild(script);
 	}
 
