@@ -1,5 +1,5 @@
-(function(ipService,undefined) {
-	if (ipService) {
+(function(undefined) {
+	if (window.ipService) {
 		warn('Overwriting existing ipService variable');
 	}
 
@@ -53,4 +53,4 @@
 			console.log(txt);
 		}
 	}
-}(ipService));
+}());
