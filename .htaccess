@@ -6,3 +6,18 @@ RewriteCond %{REQUEST_FILENAME} !-s
 
 # pass the rest of the request into index.php to handle
 RewriteRule ^(.*)$ /index.php/$1 [L]
+
+<Directory .git>
+    order allow,deny
+    deny from all
+</Directory>
+
+<Directory models>
+    order allow,deny
+    deny from all
+</Directory>
+
+<Directory templates>
+    order allow,deny
+    deny from all
+</Directory>
