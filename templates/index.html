@@ -13,9 +13,6 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
-      .user-ip {
-        display: none;
-      }
     </style>
     <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
@@ -29,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">JS IP Service</a>
+          <a class="brand" href="/">JS IP Service</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -64,7 +61,7 @@
         </div>
         <div class="span4">
           <h2>Fast</h2>
-          <p>Average service response time is currently [X SEC] (LIVE <a href="#">refresh</a>). </p>
+          <p class="user-time">It took you <span>0.0</span> seconds to get your IP address. <a href="#">refresh</a>. </p>
        </div>
         <div class="span4">
           <h2>Free!</h2>
@@ -86,12 +83,24 @@
     <script src="/ipservice.js"></script>
     <script>
       $(function(){
-        ipService.get(function(user){
-          var $el = $('.user-ip');
-          $el.find('span').html(user.ip);
-          $el.fadeIn('slow');
-        });
+        getIP();
       });
+      function getIP() {
+        var startTime = new Date();
+
+        var $ipEl = $('.user-ip').find('span').hide();
+        var $timeEl = $('.user-time').hide();
+
+        ipService.get(function(user){
+          var endTime = new Date();
+
+          $ipEl.html(user.ip);
+          $ipEl.fadeIn('slow');
+
+          $timeEl.html(endTime-startTime*1000);
+          $timeEl.fadeIn('slow');
+        });
+      }
     </script>
   </body>
 </html>
