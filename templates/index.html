@@ -13,6 +13,9 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
+      .user-ip {
+        display: none;
+      }
     </style>
     <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
@@ -48,6 +51,7 @@
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Javascript IP Service</h1>
+        <h2 class="user-ip">Your IP: <span></span></h2>
         <p>Need to get the user's IP address from javascript?  Look no futher.  Our minimal library and fast service will quickly grant you asyncronous information about your user's client.</p>
         <p><a href="/docs" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
       </div>
@@ -79,5 +83,15 @@
     <!--js-->
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/ipservice.js"></script>
+    <script>
+      $(function){
+        ipService.get(function(ip){
+          var $el = $('.user-ip');
+          $el.find('span').html(ip);
+          $el.fadeIn('slow');
+        });
+      });
+    </script>
   </body>
 </html>
