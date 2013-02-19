@@ -10,17 +10,20 @@ $allowed = array_merge($pages,$docs);
 $path = explode('/', $_SERVER['PATH_INFO']);
 $route = $path[1];
 
+/*route to the REST service*/
 if ($route === 'REST') {
 	require('./models/rest.php');
 	$rest = new RestService('GET');
 	$rest->handleRawRequest();
 }
-else if (in_array($route, $allowed)) {
-	$page = $path[1];
-	require('./templates/index.html');
-}
+/*or render the website*/
 else {
 	$page = 'home';
-	require('./templates/index.html');
+	if (in_array($route, $allowed)) {
+		$page = $path[1];
+	}
+	require('./templates/fragments/header.html');
+	require('./templates/'.$page.'.html');
+	require('./templates/fragments/footer.html');
 }
 ?>

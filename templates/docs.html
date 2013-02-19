@@ -1,0 +1,155 @@
+<!-- Docs nav
+================================================== -->
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+      <li><a href="#overview"><i class="icon-chevron-right"></i>Overview</a></li>
+      <li><a href="#file-structure"><i class="icon-chevron-right"></i>File Structure</a></li>
+      <li><a href="#quick-start"><i class="icon-chevron-right"></i>Quick Start</a></li>
+      <li><a href="#example"><i class="icon-chevron-right"></i>Example</a></li>
+    </ul>
+  </div>
+  <div class="span9">
+
+    <!-- Overview
+    ================================================== -->
+    <section id="overview">
+      <div class="page-header">
+        <h1>Overview</h1>
+      </div>
+
+        <p>The BI Frontend Library is composed of a number of differet pieces.  The Core Library is comprised of
+          framework code and commonly used utility methods, able to be leveraged in both the user-facing front-end
+          and the CMS.  Through utalizing framework methods, CMS forms can be augmented with Knockout-enhanced
+          functionality, providing a quick and easy way to aggresively bind a data model (javascript object) to
+          form elements.</p>
+
+        <p>The Knockout-enhanced forms can leverage jQuery plugins to replace form elements with widgets
+          (jquery plugins), hooked together with knockout plugin adaptors.  Further functionality can be added
+          by attaching validation to the form (which uses jQuery validate).</p>
+
+        <p>The per-form logic is encompased in a controller, which handles intantiating viewModels, generating
+          templates, and defines custom behavior (such as cloning form fields).</p>
+
+    </section>
+
+  <!-- File structure
+    ================================================== -->
+    <section id="file-structure">
+      <div class="page-header">
+        <h1>File structure</h1>
+      </div>
+      <p class="lead">Within the tbi repository, the overall structure of the library is organzied as follows:</p>
+      <pre class="prettyprint">
+      tbi/assets/CMS/assets
+      ├── css
+      ├── img
+      ├── js
+      │   ├── lib
+      │   │   ├── BI
+      │   │   ├── controllers
+      │   │   ├── plugin-adaptors
+      │   │   ├── plugins
+      │   │   └── validation-rules
+      │   └── vendor
+      └── templates
+      </pre>
+    </section>
+
+
+  <!-- Quick Start
+    ================================================== -->
+    <section id="quick-start">
+      <div class="page-header">
+        <h1>Quick Start</h1>
+      </div>
+      <p class="lead">Enough talk, let's get dirty!</p>
+      <p class="lead">Here are the necessary things you will need to have on the page.</p>
+
+      <h3>1. Write your form, with <code>data-bind</code> attributes.</h3>
+      <pre class="prettyprint">
+      &lt;form&gt;
+      &lt;p&gt;
+          &lt;label&gt;Fullname&lt;/label&gt;
+          &lt;input type=&quot;text&quot; name=&quot;fullname&quot; data-bind=&quot;value: fullname&quot;/&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+          &lt;label&gt;Favorite Color&lt;/label&gt;
+          &lt;input type=&quot;text&quot; name=&quot;color&quot; data-bind=&quot;colorpicker: color&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+          &lt;label&gt;Age&lt;/label&gt;
+          &lt;input type=&quot;text&quot; name=&quot;age&quot; data-bind=&quot;value: age&quot; /&gt;
+      &lt;/p&gt;
+      &lt;/form&gt;
+      </pre>
+
+
+      <h3>2. Include all the Javascript files and CSS files.</h3>
+      <p>
+        These are neatly grouped together in two template for your convenience.
+        <br />
+        The CSS should prefereably be included in the <code>&lt;head&gt;</code> and the JS at the end of the <code>&lt;body&gt;</code>
+        <br />
+        NOTE: The js MUST be included before the controller.  The require paths shown here are absolure from the tbi doc root, you will
+        have to adjust them based on your template's location.
+      </p>
+      <pre class="prettyprint">
+      &lt;!doctype html&gt;
+      &lt;head&gt;
+          &lt;? require "/assets/CMS/assets/templates/fragments/css.tpl.php"; ?&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+          ...
+          YOUR FORM GOES HERE
+          ...
+          &lt;? require "/assets/CMS/assets/templates/fragments/js.tpl.php"; ?&gt;
+      &lt;/body&gt;
+      &lt;/html&gt;
+
+      </pre>
+
+    <h3>3. Write and include your controller. </h3>
+      <p class="">Here is the bare minimum controller. (For an in depth explanation view the appropriate section and documentation.)</p>
+      <pre class="prettyprint">
+      (function($,ko,BI,undefined) {
+        var dataModel, vm, data;
+
+        // data shown here should be IN THE TEMPLATE
+        // and just referenced / included here
+        dataModel = {
+            fullname: '',
+            color: '',
+            age: 0
+        };
+        data = {
+            fullname: 'Josh',
+            color: 'ab3eab',
+            age: 16
+        };
+
+        //construct a view model with the data
+        vm = BI.mvvm.constructViewModel({
+            data: data,
+            dataTemplate: dataModel
+        });
+
+        //initialize the DOM bindings
+        BI.mvvm.applyBindings(vm);
+
+      }(jQuery, ko, BI));
+      </pre>
+
+    </section>
+
+    <section id="example">
+      <div class="page-header">
+        <h1>Example</h1>
+      </div>
+      <p class="lead">Put it all together to get a simple form:</p>
+      <iframe style="width: 100%; height: 300px; border: 0;" src="/examples/examples/get-started/minimal.php"></iframe>
+    </section>
+
+
+     </div><!-- span9 -->
+</div><!-- row -->
