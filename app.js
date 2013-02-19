@@ -35,4 +35,4 @@
   function bind() {
     $timeContainer.on('click','a',getIP);
   }
-})
+}())
