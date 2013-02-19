@@ -8,7 +8,7 @@ class RestService {
     $this->supportedMethods = $supportedMethods;
   }
 
-  public function handleRawRequest($_SERVER, $_GET, $_POST) {
+  public function handleRawRequest() {
     $url = $this->getFullUrl($_SERVER);
     $method = $_SERVER['REQUEST_METHOD'];
     switch ($method) {
