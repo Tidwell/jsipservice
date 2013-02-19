@@ -29,7 +29,7 @@ class RestService {
   }
 
   protected function getFullUrl($server) {
-    $protocol = $server['HTTPS'] == 'on' ? 'https' : 'http';
+    $protocol = 'http';
     $location = $server['REQUEST_URI'];
     if ($server['QUERY_STRING']) {
       $location = substr($location, 0, strrpos($location, $server['QUERY_STRING']) - 1);
@@ -68,7 +68,7 @@ class RestService {
   public function performGet($url, $arguments, $accept) {
     header('content-type: application/json; charset=utf-8');
     $data = json_encode($_SERVER['REMOTE_ADDR']);
-    echo $_GET['callback'] . '(' . $data . ');';
+    echo $_GET['callback'] || 'callback' . '(' . $data . ');';
   }
 
   public function performHead($url, $arguments, $accept) {
