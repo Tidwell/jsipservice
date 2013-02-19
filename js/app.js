@@ -6,6 +6,7 @@
   $(function(){
     getEls();
     bind();
+    prettyPrint();
     getIP();
   });
 
