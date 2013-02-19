@@ -17,7 +17,7 @@
 		callback off of the temporary storage object
 	*/
 	function CB(callback,cbName) {
-		if (!callback) { callback = callbacks.default; } //set the default if none passed
+		if (!callback) { callback = callbacks['default']; } //set the default if none passed
 		return function(ip) {
 			callback(ip);
 			delete callbacks[cbName];

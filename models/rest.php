@@ -66,12 +66,25 @@ class RestService {
   }
 
   public function performGet($url, $arguments, $accept) {
+    //get callback or use default
     $callback = isset($_GET['callback']) ? $_GET['callback'] : 'callback';
+
+    //prepare response
     $data = Array(
       'ip' => $_SERVER['REMOTE_ADDR']
     );
 
+    //json
     header('content-type: application/json; charset=utf-8');
+
+    //do not cache
+    header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT' );
+    header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
+    header( 'Cache-Control: no-store, no-cache, must-revalidate' );
+    header( 'Cache-Control: post-check=0, pre-check=0', false );
+    header( 'Pragma: no-cache' );
+
+    //respond
     echo $callback . '(' . json_encode($data) . ');';
   }
 
