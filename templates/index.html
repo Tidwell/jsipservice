@@ -81,26 +81,6 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/ipservice.js"></script>
-    <script>
-      $(function(){
-        getIP();
-      });
-      function getIP() {
-        var startTime = new Date();
-
-        var $ipEl = $('.user-ip').find('span').hide();
-        var $timeEl = $('.user-time').find('span').hide();
-
-        ipService.get(function(user){
-          var endTime = new Date();
-
-          $ipEl.html(user.ip);
-          $ipEl.fadeIn('slow');
-
-          $timeEl.html((endTime-startTime)/1000);
-          $timeEl.fadeIn('slow');
-        });
-      }
-    </script>
+    <script src="/app.js"></script>
   </body>
 </html>
