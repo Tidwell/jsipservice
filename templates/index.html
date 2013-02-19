@@ -86,9 +86,9 @@
     <script src="/ipservice.js"></script>
     <script>
       $(function(){
-        ipService.get(function(ip){
+        ipService.get(function(user){
           var $el = $('.user-ip');
-          $el.find('span').html(ip);
+          $el.find('span').html(user.ip);
           $el.fadeIn('slow');
         });
       });
