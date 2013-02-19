@@ -26,6 +26,5 @@ else if (!in_array($route, $docs)) {
 	require('./templates/'.$page.'.html');
 	require('./templates/fragments/footer.html');
 }
-
 //otherwise it just serves the file from in bootstrap/ or js/
 ?>
