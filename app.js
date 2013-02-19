@@ -24,6 +24,8 @@
       $ipEl.fadeIn('slow');
       $timeEl.fadeIn('slow');
     });
+
+    return false; //stop prop and prev def if we are in a click handler
   }
 
   function getEls() {
@@ -35,4 +37,4 @@
   function bind() {
     $timeContainer.on('click','a',getIP);
   }
-}())
+}());
