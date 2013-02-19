@@ -17,13 +17,15 @@ if ($route === 'REST') {
 	$rest->handleRawRequest();
 }
 /*or render the website*/
-else {
+else if (!in_array($route, $docs)) {
 	$page = 'home';
-	if (in_array($route, $allowed)) {
+	if (in_array($route, $pages)) {
 		$page = $path[1];
 	}
 	require('./templates/fragments/header.html');
 	require('./templates/'.$page.'.html');
 	require('./templates/fragments/footer.html');
 }
+
+//otherwise it just serves the file from in bootstrap/ or js/
 ?>
