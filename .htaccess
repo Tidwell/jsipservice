@@ -2,9 +2,9 @@ RewriteEngine on
 RewriteBase /
 
 # dont allow the internal dirs
-RewriteRule .*\.git/.* - [F]
-RewriteRule .*\templates/.* - [F]
-RewriteRule .*\models/.* - [F]
+RewriteRule .*\.git/.* - /index.php/ [L]
+RewriteRule .*\templates/.* - /index.php/ [L]
+RewriteRule .*\models/.* - /index.php/ [L]
 
 # only rewrite if the requested file doesn't exist
 RewriteCond %{REQUEST_FILENAME} !-s
