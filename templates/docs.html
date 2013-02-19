@@ -38,7 +38,7 @@
 
       <h3>1. Include the library via <code>script</code> tag.</h3>
 <pre class="prettyprint">
-&lt;script src="www.jsIpService.com/ipservice.js"&gt;&lt;/script&gt;
+&lt;script src="www.jsIpService.com/ipservice.min.js"&gt;&lt;/script&gt;
 </pre>
 
 
@@ -56,7 +56,7 @@ ipService.get(callback);
           <h1>Internals</h1>
         </div>
         <p>
-          Internally, the library caches your callback before injecting a script tag into the page, then on response, executes your callback and performs cleanup (removing the injected script tag) and removing the stored callback.
+          Internally, the js library caches your callback before injecting a script tag into the page, then on response, executes your callback and performs cleanup (removing the injected script tag) and removing the stored callback.
         </p>
 
         <p>
@@ -68,6 +68,19 @@ ipService.get(callback);
 
         <p>
           If the warning: <code>'Overwriting existing ipService variable'</code> shows up in console, either you are including the script tag multiple times, or you are already using the ipService variable in your own code in global scope.  If this is the case, feel free to download and rehost a copy of the library with whatever changes you need.
+        </p>
+
+        <p>
+          On the backend, both this website and the REST service are running through the same single-entry-point, with calls to the api being handled through a rest class, modified from <a href="http://blog.garethj.com/2009/02/17/building-a-restful-web-application-with-php/">this example</a>.
+        </p>
+    </section>
+
+    <section id="source">
+        <div class="page-header">
+          <h1>Source</h1>
+        </div>
+        <p>
+          The source for the library, unminified, is available at: <a href="http://www.jsipservice.com/ipservice.js" target="_new">http://www.jsipservice.com/ipservice.js</a> or via <a href="https://github.com/Tidwell/jsipservice/blob/master/ipservice.js">github</a>, along with the source for the entire site and service.
         </p>
     </section>
 
