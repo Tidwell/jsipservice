@@ -1,4 +1,6 @@
 (function(undefined) {
+	"use strict";
+
 	if (window.ipService) {
 		warn('Overwriting existing ipService variable');
 	}
@@ -39,7 +41,7 @@
 		var uniqueCBName = 'cb'+cbCount;
 
 		callbacks[uniqueCBName] = new CB(callback,uniqueCBName);
-		script = document.createElement('script');
+		var script = document.createElement('script');
 		script.type = 'text/javascript';
 		script.className = classPrefix+uniqueCBName;
 		script.src = 'http://www.jsipservice.com/REST?callback=ipService.callbacks.'+uniqueCBName;
