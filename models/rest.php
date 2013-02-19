@@ -66,10 +66,13 @@ class RestService {
   }
 
   public function performGet($url, $arguments, $accept) {
-    header('content-type: application/json; charset=utf-8');
-    $data = json_encode($_SERVER['REMOTE_ADDR']);
     $callback = isset($_GET['callback']) ? $_GET['callback'] : 'callback';
-    echo $callback . '(' . $data . ');';
+    $data = Array(
+      'ip' => $_SERVER['REMOTE_ADDR']
+    );
+
+    header('content-type: application/json; charset=utf-8');
+    echo $callback . '(' . json_encode($data) . ');';
   }
 
   public function performHead($url, $arguments, $accept) {
