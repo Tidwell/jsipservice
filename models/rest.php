@@ -1,3 +1,5 @@
+<?
+
 class RestService {
 
   private $supportedMethods;
@@ -64,7 +66,9 @@ class RestService {
   }
 
   public function performGet($url, $arguments, $accept) {
-    $this->methodNotAllowedResponse();
+    header('content-type: application/json; charset=utf-8');
+    $data = json_encode($_SERVER['REMOTE_ADDR']);
+    echo $_GET['callback'] . '(' . $data . ');';
   }
 
   public function performHead($url, $arguments, $accept) {
@@ -84,3 +88,4 @@ class RestService {
   }
 
 }
+?>
