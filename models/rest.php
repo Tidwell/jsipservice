@@ -28,13 +28,13 @@ class RestService {
     $this->handleRequest($url, $method, $arguments, $accept);
   }
 
-  protected function getFullUrl($_SERVER) {
-    $protocol = $_SERVER['HTTPS'] == 'on' ? 'https' : 'http';
-    $location = $_SERVER['REQUEST_URI'];
-    if ($_SERVER['QUERY_STRING']) {
-      $location = substr($location, 0, strrpos($location, $_SERVER['QUERY_STRING']) - 1);
+  protected function getFullUrl($server) {
+    $protocol = $server['HTTPS'] == 'on' ? 'https' : 'http';
+    $location = $server['REQUEST_URI'];
+    if ($server['QUERY_STRING']) {
+      $location = substr($location, 0, strrpos($location, $server['QUERY_STRING']) - 1);
     }
-    return $protocol.'://'.$_SERVER['HTTP_HOST'].$location;
+    return $protocol.'://'.$server['HTTP_HOST'].$location;
   }
 
   public function handleRequest($url, $method, $arguments, $accept) {
