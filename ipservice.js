@@ -3,6 +3,8 @@
 		warn('Overwriting existing ipService variable');
 	}
 
+	var classPrefix = 'ipService';
+
 	// counts the number of callbacks initiated, used for generating unique callback names
 	var cbCount = 0;
 	// used to store user callbacks so they are accessable from global
@@ -16,9 +18,17 @@
 	*/
 	function CB(callback,cbName) {
 		return function(ip) {
-			callback(ip);
+			if (callback) {
+				callback(ip);
+			}
 			delete callbacks[cbName];
+			clearTag(cbName);
 		};
+	}
+
+	function clearTag(cbName) {
+		var el = document.getElementsByClassName(classPrefix+cbName)[0];
+		el.parent.removeChild(el);
 	}
 
 	/*
@@ -26,14 +36,13 @@
 		@requires function callback - to be called with the ip address of the client
 	*/
 	function get(callback) {
-		var cbName = 'default';
-		if (callback) {
-			cbCount++;
-			cbName= 'cb'+cbCount;
-			callbacks[cbName] = new CB(callback,cbName);
-		}
+		cbCount++;
+		var uniqueCBName = 'cb'+cbCount;
+
+		callbacks[uniqueCBName] = new CB(callback,cbName);
 		script = document.createElement('script');
 		script.type = 'text/javascript';
+		script.className = classPrefix+uniqueCBName;
 		script.src = 'http://www.jsipservice.com/REST?callback=ipService.callbacks.'+cbName;
 		document.getElementsByTagName('head')[0].appendChild(script);
 	}
