@@ -5,3 +5,7 @@ body {
 .home-example {
 	margin-top: 1em;
 }
+.home-example,
+.home-example pre {
+	font-size: .8em;
+}
