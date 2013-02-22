@@ -11,6 +11,12 @@
   });
 &lt;/script&gt;
 </pre>
+<p>Or if you already are using jQuery</p>
+<pre class="prettyprint lang-html">
+$.getJSON("http://www.jsipservice.com/REST?callback=?",function(obj) {
+    alert(obj.ip)
+});
+</pre>
     </div>
     <h2 class="user-ip">Your IP: <span></span></h2>
     <p>Need to get the user's IP address from javascript?  Look no further.  Our minimal javascript library and fast service will asynchronous expose your user's IP.</p>
